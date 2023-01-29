@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Draggable Text</title>
+    <style>
+    .dropbox {
+        width: 350px;
+        height: 50px;
+        padding: 5px;
+        border: 1px solid #292828;
+    }
+     
+    h1 {
+        color: green;
+    }
+    </style>
+    <script>
+    function droppoint(event) {
+        var data = event.dataTransfer.getData("Text");
+        event.target.appendChild(document.getElementById(data));
+        event.preventDefault();
+    }
+ 
+    function allowDropOption(event) {
+        event.preventDefault();
+    }
+ 
+    function dragpoint(event) {
+        event.dataTransfer.setData("text", event.target.id);
+    }
+    </script>
+</head>
+ 
+<body>
+    <center>
+        <h1>GeeksforGeeks</h1>
+        <h3>Drag the text in the rectangle</h3>
+        <div class="dropbox"
+             ondrop="droppoint(event)"
+             ondragover="allowDropOption(event)">
+          </div>
+        <p id="drag1"
+           draggable="true"
+           ondragstart="dragpoint(event)">
+        <span style="white-space: pre-line">
+        CSE 231 - 4
+        Intro to Progr II
+        </span>
+        </p>
+ 
+ 
+    </center>
+</body>
+</html>
